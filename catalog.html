@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Распознавание голоса и чтение текста</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+  <script>
+    var recognizer = new webkitSpeechRecognition();
+
+// Ставим опцию, чтобы распознавание началось ещё до того, как пользователь закончит говорить
+recognizer.interimResults = true;
+
+// Какой язык будем распознавать?
+recognizer.lang = 'ru-Ru';
+
+// Используем колбек для обработки результатов
+recognizer.onresult = function (event) {
+  var result = event.results[event.resultIndex];
+  if (result.isFinal) {
+    alert('Вы сказали: ' + result[0].transcript);
+  } else {
+    console.log('Промежуточный результат: ', result[0].transcript);
+  }
+};
+
+function speech () {
+  // Начинаем слушать микрофон и распознавать голос
+  recognizer.start();
+}
+
+var synth = window.speechSynthesis;
+var utterance = new SpeechSynthesisUtterance('Hello all,What are you doing?,Would you, please, keep an eye on my baggage?,Dont you like it?');
+
+function talk () {
+  synth.speak (utterance);
+}
+
+function stop () {
+  synth.pause();
+}
+
+  </script>
+<section>
+
+
+<body style="background-color:antiquewhite;">
+</body>
+    <div class="col-st">
+      <h2>Распознование голоса и прослушивание текста</h2>
+      <h3>Это программа для экономии вашего времени, которая позволяет не печатая, а говоря, вывести сказанное на экран</h3>
+
+      </div>
+
+        <button class="qq" onclick="speech ()">Прослушать голос</button>
+        <hr></hr>
+        <button class="qq" onclick="talk ()">Проговорить текст</button>
+        <hr></hr>
+        <button class="qq" onclick="stop ()">Остановить</button>
+        <hr></hr>
+
+
+        <div aria-busy="true" aria-label="Loading" role="progressbar" class="container">
+          <div class="swing">
+            <div class="swing-l"></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div class="swing-r"></div>
+          </div>
+          <div class="shadow">
+            <div class="shadow-l"></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div class="shadow-r"></div>
+          </div>
+         </div>
+<div class="container1">
+           <div class="clock">
+             <div class="clock-inner">
+               <div class="clock-minutes"></div>
+             <ul class="clock-numbers">
+                                 <li>XII</li>
+                                 <li>III</li>
+                                 <li>VI</li>
+                                 <li>IX</li>
+                             </ul></div>
+           </div>
+           <h3>hover to pause</h3>
+         </div>
+
+
+<div class="copyright">
+<p>Copyright © My Website 2018</p>
+<h5>Связаться:</h5>
+<a href="" class="icon-block">
+<i class=""  style="margin-left:670px;"</i></i>
+</a>
+<i class="fa fa-vk" style="font-size:40px;" </i></i>
+<i class="fa fa-facebook" style="font-size:40px;"</i></i>
+<i class="fa fa-skype" style="font-size:40px;"</i></i>
+</div>
+</section>
+</body>
+</html>
